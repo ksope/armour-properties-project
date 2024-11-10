@@ -12,18 +12,15 @@
     --primary-color: #0a1106;
     --secondary-color: #e9c675;
     --text-light: #d6ddd2;
-    --white: #ffffff;
     --max-width: 1200px;
     --header-font: "Playfair Display", serif;
     --color-white: #fff;
     --color-black: #000;
-    --color-blue: #012169;
     --color-light-hover: #e8e9e7;
     --color-dark: #525252;
     --color-light: #f4f4f4;
+    --color-light-green: #6c866f;
     --color-dark-grey: #777;
-    --color-light-red: rgba(226, 0, 0, 0.7);
-    --color-very-light-red: #f2c3c7;
     --color-light-grey: #ccc;
     --color-transparent-grey: rgba(25, 43, 17, 0.3);
     --transition: all 300ms ease;
@@ -50,7 +47,10 @@ body {
 .header {
     /* min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0),
+            var(--primary-color)
+        ),
         url(./assets/images/homepage_prop.jpg);
     background-position: center;
     background-size: cover;
@@ -102,7 +102,7 @@ p {
     font-size: 3rem;
     font-weight: 400;
     font-family: var(--header-font);
-    color: var(--white);
+    color: var(--color-white);
 }
 
 .section__container {
@@ -270,6 +270,7 @@ nav .fa {
     justify-content: center;
     align-items: center;
     font-family: var(--header-font);
+    height: 28rem;
 }
 
 .project-col img {
@@ -343,7 +344,13 @@ nav .fa {
     padding: 100px 0;
 }
 
-.contact h1 {
+.clear-contact-pic {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+        url(assets/images/contact-us.jpg);
+}
+
+.contact h1,
+.sub-contact h1 {
     color: var(--color-white);
     margin-bottom: 40px;
     padding: 0;
@@ -379,7 +386,7 @@ footer .container ul {
 }
 
 footer .container ul a {
-    color: var(--white);
+    color: var(--color-white);
     transition: var(--transition);
 }
 
@@ -390,12 +397,12 @@ footer .container ul a:hover {
 footer .container .socials {
     display: flex;
     gap: 2rem;
-    color: var(--white);
+    color: var(--color-white);
 }
 
 footer .container .socials a {
     font-size: 1.2rem;
-    color: var(--white);
+    color: var(--color-white);
 }
 
 footer .container .socials a:hover {
@@ -413,7 +420,10 @@ footer .container .footer-img {
 .sub-header {
     max-height: 70vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0),
+            var(--primary-color)
+        ),
         url(assets/images/contact-us.jpg);
     background-position: center;
     background-size: cover;
@@ -421,54 +431,23 @@ footer .container .footer-img {
     color: var(--color-white);
 }
 
-.sub-header h1 {
+.sub-header h1,
+.get-col h1,
+.vision-content h1 {
     margin-top: 25px;
     font-size: 2.5rem;
     padding-bottom: 2rem;
+    font-family: var(--header-font);
 }
 
 .sub-header p {
     padding: 5px 100px 25px;
 }
 
-/* toggle to read more content using JS */
-section.content .container .read-more-content.show-content {
-    display: block;
-}
-
-section.content .container .read-more-content {
-    display: none;
-}
-
-section.content .container .read-more {
-    display: block;
-    margin: 1rem 0 2rem;
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-section.content .container .read-more:hover {
-    text-decoration: underline;
-}
-
-/*************Values***************/
-section.values,
-section.visions,
-section.backgrd-shade {
-    background: var(--primary-color);
+/*************Vision***************/
+section.visions {
+    background: var(--color-light);
     padding: 6rem 0 7rem;
-}
-
-section.values h1,
-section.visions h1 {
-    margin-bottom: 4rem;
-}
-
-section.values .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    width: 90%;
 }
 
 section.visions .container {
@@ -477,7 +456,6 @@ section.visions .container {
     gap: 2rem;
 }
 
-section.values .container .value,
 section.visions .container .vision {
     background: var(--color-white);
     padding: 3rem 2rem;
@@ -489,19 +467,16 @@ section.visions .container .vision {
     transition: var(--transition);
 }
 
-section.values .container .value p,
 section.visions .container .vision p {
     font-size: 0.8rem;
 }
 
-section.values .container .value:hover,
 section.visions .container .vision:hover {
-    box-shadow: 0 3rem 3rem var(--color-very-light-red);
+    box-shadow: 0 3rem 3rem var(--text-light);
 }
 
-section.values .container .value span,
 section.visions .container .vision span {
-    background: var(--primary-color);
+    background: var(--color-red);
     width: 4rem;
     height: 4rem;
     margin: 0 auto;
@@ -513,7 +488,7 @@ section.visions .container .vision span {
 }
 
 section.visions .container .vision span {
-    background: var(--color-blue);
+    background: var(--color-light-green);
 }
 
 section.content {
@@ -540,7 +515,12 @@ section.content p {
     background-color: var(--color-light);
 }
 
-.section-container {
+.get-involved.live-well {
+    color: var(--color-white);
+}
+
+.section-container,
+.vision-content {
     width: 80%;
     margin: auto;
     padding-top: 20px;
@@ -559,7 +539,6 @@ section.content p {
 .get-col h1 {
     padding-top: 0;
     text-align: left;
-    font-size: 2rem;
 }
 
 .get-col p {
@@ -567,9 +546,9 @@ section.content p {
 }
 
 .red-btn {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--color-red);
     background: transparent;
-    color: var(--primary-color);
+    color: var(--color-red);
 }
 
 .red-btn:hover {
@@ -604,70 +583,21 @@ section.content p {
 }
 
 /*********************FEATURED PROPERTIES PAGE****************************/
-
-.project-content {
-    width: 80%;
-    margin: auto;
-    padding: 60px 0;
-}
-
-.project-content h1 {
-    font-size: 2.6rem;
-}
-
-.project-left img {
+.project-page-container {
     width: 100%;
-    margin-bottom: 40px;
-    filter: grayscale(80%) blur(0.5px);
-    border-radius: 5px;
+    color: var(--color-white);
+}
+.page {
+    background-color: var(--primary-color);
 }
 
-.project-left h4 {
-    color: #222;
-    font-weight: 600;
-    font-size: 1.2rem;
+.project {
+    width: 80%;
+    margin: 90px auto;
 }
 
-.project-left p,
-.project-left ul {
-    color: #999;
-    padding: 0;
-}
-
-.project-left ul li {
-    margin: 10px 0;
-}
-
-.project-left ul li span {
-    color: #222;
-    font-weight: 500;
-}
-
-.project-points li {
-    margin: 10px 0;
-}
-
-.project-content-container {
-    background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 40px 80px;
-    align-items: flex-start;
-    border-radius: 8px;
-}
-
-.project-content h1 {
-    font-size: 1.6rem;
-}
-
-.project-content h2 {
-    font-size: 1.2rem;
-}
-
-.project-content .project-policy-content .project-points span {
-    font-weight: 600;
+.project h1 {
+    margin-bottom: 1rem;
 }
 
 /*********************MEDIA QUERIES****************************/
