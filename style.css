@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
     margin: 0;
@@ -9,45 +9,72 @@
 }
 
 :root {
+    --primary-color: #0a1106;
+    --secondary-color: #e9c675;
+    --text-light: #d6ddd2;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --header-font: "Playfair Display", serif;
     --color-white: #fff;
-    --color-red: #c8102e;
+    --color-black: #000;
     --color-blue: #012169;
-    --color-black: #141415;
+    --color-light-hover: #e8e9e7;
     --color-dark: #525252;
     --color-light: #f4f4f4;
     --color-dark-grey: #777;
     --color-light-red: rgba(226, 0, 0, 0.7);
     --color-very-light-red: #f2c3c7;
     --color-light-grey: #ccc;
+    --color-transparent-grey: rgba(25, 43, 17, 0.3);
     --transition: all 300ms ease;
 }
 
 body {
     font-family: "Poppins", sans-serif;
-    color: var(--color-dark);
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    background: var(--color-very-light-red);
+    width: 8px;
+    background: var(--text-light);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-red);
+    background: var(--primary-color);
 }
 
-html {
+html,
+body {
     scroll-behavior: smooth;
 }
 
 .header {
-    min-height: 100vh;
+    /* min-height: 100vh;
     width: 100%;
     background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
-        url(./assets/images/uk-house-of-parliament.jpg);
+        url(./assets/images/homepage_prop.jpg);
     background-position: center;
     background-size: cover;
+    position: relative; */
     position: relative;
+    height: 100vh;
+}
+
+.header::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 15rem);
+    background-image: radial-gradient(
+            rgba(255, 255, 255, 0),
+            var(--primary-color)
+        ),
+        url("./assets/images/homepage_prop.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
 
 p {
@@ -59,15 +86,28 @@ p {
     margin: 0 auto;
 }
 
-section {
+/* section {
     max-width: 100vw;
     overflow: hidden;
-}
+} */
 
-section h1 {
+/* section h1 {
     text-align: center;
     display: block;
     margin-bottom: 2rem;
+} */
+
+.section__header {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: var(--header-font);
+    color: var(--white);
+}
+
+.section__container {
+    margin: auto;
+    padding: 5rem 1rem;
 }
 
 /************NAV******************/
@@ -101,14 +141,8 @@ nav img {
     font-size: 13px;
 }
 
-.nav-links ul li::after {
-    content: "";
-    width: 0%;
-    height: 2px;
-    background: var(--color-red);
-    display: block;
-    margin: auto;
-    transition: 0.5s;
+.nav-links ul li a:hover {
+    color: var(--secondary-color);
 }
 
 .nav-links ul li:hover::after {
@@ -150,41 +184,100 @@ nav img {
 }
 
 .hero-btn:hover {
-    border: 1px solid var(--color-red);
-    background: var(--color-red);
+    border: 1px solid var(--secondary-color);
+    background: var(--secondary-color);
     transition: 1s;
+    color: var(--color-black);
 }
 
 nav .fa {
     display: none;
 }
 
-/*********************MANIFESTO****************************/
+/*********************ABOUT US****************************/
+
+.about-us {
+    height: 100vh;
+    width: 100%;
+    padding: 60px 180px;
+    margin-bottom: 30px;
+    background-color: var(--primary-color);
+    display: flex;
+    gap: 5rem;
+}
+
+.about-us h2 {
+    margin-bottom: 25px;
+}
+
+.image__container img {
+    max-height: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+    object-fit: contain;
+}
+
+.about__content p {
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.about__content {
+    max-width: 400px;
+}
+
+.about__content a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--secondary-color);
+}
+
+.about__content a span {
+    transition: 0.3s;
+}
+
+.about__content a:hover span {
+    transform: translateX(10px);
+}
+
+/*********************FEATURED PROPERTIES****************************/
 .row {
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
 }
 
-.manifesto {
+.project-container {
     width: 80%;
     margin: auto;
-    text-align: center;
     padding-top: 50px;
 }
 
-.manifesto-col {
+.project-container h2 {
+    color: var(--primary-color);
+}
+
+.project-col {
     flex-basis: 32%;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
-    /**filter: sepia(5%) saturate(120%) brightness(68%) hue-rotate(330deg);**/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--header-font);
 }
 
-.manifesto-col img {
+.project-col img {
     width: 100%;
     display: block;
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .layer {
@@ -199,7 +292,7 @@ nav .fa {
 }
 
 .layer:hover {
-    background: var(--color-light-red);
+    background: var(--color-transparent-grey);
 }
 
 .layer h3 {
@@ -207,20 +300,37 @@ nav .fa {
     font-weight: 700;
     color: var(--color-white);
     font-size: 26px;
-    bottom: 0;
-    left: 50%;
+    bottom: -100px;
+    left: 60%;
     transform: translateX(-50%);
-    text-transform: uppercase;
     position: absolute;
     transition: 0.5s;
 }
 
+.layer p {
+    width: 100%;
+    font-weight: 400;
+    color: var(--color-white);
+    font-size: 13px;
+    bottom: -100px;
+    left: 60%;
+    transform: translateX(-50%);
+    position: absolute;
+    transition: 0.8s;
+}
+
 .layer:hover h3 {
-    bottom: 49%;
+    bottom: 60%;
+    opacity: 1;
+}
+
+.layer:hover p {
+    bottom: 45%;
     opacity: 1;
 }
 
 /*********************CONTACT****************************/
+
 .contact {
     margin: 100px auto;
     width: 80%;
@@ -233,46 +343,20 @@ nav .fa {
     padding: 100px 0;
 }
 
-.donate {
-    margin: 100px auto;
-    width: 80%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url(assets/images/get-invloved.jpg);
-    background-position: center;
-    background-size: cover;
-    border-radius: 10px;
-    text-align: center;
-    padding: 100px 0;
-}
-
-.contact h1, .donate h1 {
+.contact h1 {
     color: var(--color-white);
     margin-bottom: 40px;
     padding: 0;
 }
 
-/*********************Home Page About Us Section****************************/
-.about-us {
-    width: 100%;
-    text-align: center;
-    padding: 60px 180px;
-    margin-bottom: 30px;
-    background-color: var(--color-light);
-}
-
-.about-us h2 {
-    margin-bottom: 25px;
-    margin-top: 20px;
-}
-
 /*********************FOOTER****************************/
 footer {
-    padding-top: 5rem;
-    background: var(--color-light);
+    padding-top: 2rem;
+    background: var(--primary-color);
 }
 
 footer .container h3 {
-    color: var(--color-black);
+    color: var(--color-white);
     line-height: 1.2;
     font-size: 1.2rem;
 }
@@ -286,7 +370,7 @@ footer .container {
 }
 
 footer .container img {
-    width: 100px;
+    width: 240px;
 }
 
 footer .container ul {
@@ -295,30 +379,27 @@ footer .container ul {
 }
 
 footer .container ul a {
-    color: var(--color-dark);
+    color: var(--white);
     transition: var(--transition);
 }
 
 footer .container ul a:hover {
-    color: var(--color-red);
+    color: var(--secondary-color);
 }
 
 footer .container .socials {
     display: flex;
     gap: 2rem;
+    color: var(--white);
 }
 
 footer .container .socials a {
-    background: var(--color-light);
-    color: var(--color-dark);
-    padding: 0.3rem;
-    border-radius: 50%;
-    transition: var(--transition);
+    font-size: 1.2rem;
+    color: var(--white);
 }
 
 footer .container .socials a:hover {
-    background: var(--color-very-light-red);
-    color: var(--color-white);
+    color: var(--secondary-color);
 }
 
 footer .container .footer-img {
@@ -326,20 +407,6 @@ footer .container .footer-img {
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-
-footer .footer-panel {
-    background: var(--color-red);
-    color: var(--color-white);
-    font-size: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5rem;
-    padding: 2rem;
-}
-
-footer .footer-panel a {
-    color: var(--color-light);
 }
 
 /*********************ABOUT US PAGE****************************/
@@ -357,6 +424,7 @@ footer .footer-panel a {
 .sub-header h1 {
     margin-top: 25px;
     font-size: 2.5rem;
+    padding-bottom: 2rem;
 }
 
 .sub-header p {
@@ -375,7 +443,7 @@ section.content .container .read-more-content {
 section.content .container .read-more {
     display: block;
     margin: 1rem 0 2rem;
-    color: var(--color-red);
+    color: var(--primary-color);
     cursor: pointer;
 }
 
@@ -387,7 +455,7 @@ section.content .container .read-more:hover {
 section.values,
 section.visions,
 section.backgrd-shade {
-    background: var(--color-light);
+    background: var(--primary-color);
     padding: 6rem 0 7rem;
 }
 
@@ -433,7 +501,7 @@ section.visions .container .vision:hover {
 
 section.values .container .value span,
 section.visions .container .vision span {
-    background: var(--color-red);
+    background: var(--primary-color);
     width: 4rem;
     height: 4rem;
     margin: 0 auto;
@@ -499,9 +567,9 @@ section.content p {
 }
 
 .red-btn {
-    border: 1px solid var(--color-red);
+    border: 1px solid var(--primary-color);
     background: transparent;
-    color: var(--color-red);
+    color: var(--primary-color);
 }
 
 .red-btn:hover {
@@ -531,51 +599,55 @@ section.content p {
     border: 1px solid var(--color-light-grey);
 }
 
-/*********************MANIFESTO PAGE****************************/
+.contact-header {
+    font-family: var(--header-font);
+}
 
-.manifesto-content {
+/*********************FEATURED PROPERTIES PAGE****************************/
+
+.project-content {
     width: 80%;
     margin: auto;
     padding: 60px 0;
 }
 
-.manifesto-content h1 {
+.project-content h1 {
     font-size: 2.6rem;
 }
 
-.manifesto-left img {
+.project-left img {
     width: 100%;
     margin-bottom: 40px;
     filter: grayscale(80%) blur(0.5px);
     border-radius: 5px;
 }
 
-.manifesto-left h4 {
+.project-left h4 {
     color: #222;
     font-weight: 600;
     font-size: 1.2rem;
 }
 
-.manifesto-left p,
-.manifesto-left ul {
+.project-left p,
+.project-left ul {
     color: #999;
     padding: 0;
 }
 
-.manifesto-left ul li {
+.project-left ul li {
     margin: 10px 0;
 }
 
-.manifesto-left ul li span {
+.project-left ul li span {
     color: #222;
     font-weight: 500;
 }
 
-.manifesto-points li {
+.project-points li {
     margin: 10px 0;
 }
 
-.manifesto-content-container {
+.project-content-container {
     background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
@@ -586,15 +658,15 @@ section.content p {
     border-radius: 8px;
 }
 
-.manifesto-content h1 {
+.project-content h1 {
     font-size: 1.6rem;
 }
 
-.manifesto-content h2 {
+.project-content h2 {
     font-size: 1.2rem;
 }
 
-.manifesto-content .manifesto-policy-content .manifesto-points span {
+.project-content .project-policy-content .project-points span {
     font-weight: 600;
 }
 
@@ -685,11 +757,13 @@ section.content p {
         flex-direction: column;
     }
 
-    .contact, .donate {
+    .contact,
+    .donate {
         margin: 60px auto 30px;
     }
 
-    .contact h1, .donate h1 {
+    .contact h1,
+    .donate h1 {
         font-size: 24px;
     }
 
@@ -743,13 +817,13 @@ section.content p {
         width: 80%;
     }
 
-    /*******MANIFESTO**********/
+    /*******project**********/
 
-    .manifesto-content-container {
+    .project-content-container {
         padding: 40px 20px;
     }
 
-    .manifesto-content {
+    .project-content {
         width: 85%;
     }
 }
